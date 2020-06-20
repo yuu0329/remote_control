@@ -71,7 +71,7 @@ def handle_message(event):
         publish_control_msg('off')
     else:
         broadcast_line_msg('点ける:on\n' \
-                            '消す:off\n')
+                            '消す:off')
 
 if __name__=='__main__':
     port = int(os.getenv('PORT'))
