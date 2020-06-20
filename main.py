@@ -14,9 +14,9 @@ app = Flask(__name__)  # webアプリケーションの初期化
 
 # LINE API関係の環境変数取得
 # os.environ[環境変数名]
-
-YOUR_CHANNEL_SECRET = os.environ['YOUR_CHANNEL_ACCESS_SECRET']
 YOUR_CHANNEL_ACCESS_TOKEN = os.environ['YOUR_CHANNEL_ACCESS_TOKEN']
+YOUR_CHANNEL_SECRET = os.environ['YOUR_CHANNEL_ACCESS_SECRET']
+
 
 #Beebotte関係の環境変数取得
 YOUR_BEEBOTTE_TOKEN = os.environ['YOUR_BEEBOTTE_TOKEN']
