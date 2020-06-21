@@ -26,8 +26,7 @@ line_bot_api = LineBotApi(YOUR_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(YOUR_CHANNEL_SECRET)
 
 #メッセージリスト
-on_msg = [s.encode('utf-8') for s in ['on']]
-off_msg = [s.encode('utf-8') for s in ['off']]
+msg_list = ['on','off']
 
 # LINEに通知を送る
 def broadcast_line_msg(msg):
@@ -65,13 +64,12 @@ def callback():
 def handle_message(event):
     msg = event.message.text.encode('utf-8')
 
-    if msg in on_msg:
-        publish_control_msg('on')
-    elif msg in off_msg:
-        publish_control_msg('off')
-    else:
-        broadcast_line_msg('点ける:on\n' \
-                            '消す:off')
+    broadcast_line_msg('点ける:on\n' \
+                        '消す:off')
+
+    if msg in msg_list:
+        publish_control_msg(msg)
+        
 
 if __name__=='__main__':
     port = int(os.getenv('PORT'))
