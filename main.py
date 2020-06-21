@@ -38,7 +38,7 @@ def publish_control_msg(msg):
                     msg, \
                     hostname = 'mqtt.beebotte.com', \
                     port = 8833, \
-                    auth = {'username':'token:' + YOUR_BEEBOTTE_TOKEN}, \
+                    auth = {'username':'token:'}, \
                     tls = {'ca_certs':'mqtt.beebotte.com.pem'} \
                     )
 
