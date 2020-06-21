@@ -26,7 +26,7 @@ line_bot_api = LineBotApi(YOUR_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(YOUR_CHANNEL_SECRET)
 
 #メッセージリスト
-msg_list = ['on','off']
+msg_list = [s.encode('utf-8') for s in ['on','off']]
 
 # LINEに通知を送る
 def broadcast_line_msg(msg):
