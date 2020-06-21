@@ -64,12 +64,12 @@ def callback():
 def handle_message(event):
     msg = event.message.text.encode('utf-8')
 
-    broadcast_line_msg('点ける:on\n' \
-                        '消す:off')
-
     if msg in msg_list:
         publish_control_msg(msg)
-        
+    elif:
+        broadcast_line_msg('点ける:on\n' \
+                            '消す:off')
+
 
 if __name__=='__main__':
     port = int(os.getenv('PORT'))
