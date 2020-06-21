@@ -66,7 +66,7 @@ def handle_message(event):
 
     if msg in msg_list:
         publish_control_msg(msg)
-    elif:
+    else:
         broadcast_line_msg('点ける:on\n' \
                             '消す:off')
 
