@@ -65,7 +65,7 @@ def handle_message(event):
     msg = event.message.text.encode('utf-8')
 
     if msg in msg_list:
-        publish_control_msg('on')
+        publish_control_msg(msg)
     else:
         broadcast_line_msg('点ける:on\n' \
                             '消す:off')
