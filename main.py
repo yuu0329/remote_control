@@ -34,12 +34,14 @@ def broadcast_line_msg(msg):
 
 # エアコン制御用のMQTTを発行する
 def publish_control_msg(msg):
+    broadcast_line_msg('get msg')
     publish.single('my_home/remote_control', \
                     msg, \
                     hostname = 'mqtt.beebotte.com', \
                     port = 8833, \
                     auth = {'username':'<token:{}>'.format(YOUR_BEEBOTTE_TOKEN)}, \
                     tls = {'ca_certs':'<mqtt.beebotte.com.pem>'})
+    broadcast_line_msg('msg publish')
 
 
 @app.route('/callback',methods=['POST']) # /callbackでデータを送られた時(POST)の処理
@@ -65,7 +67,7 @@ def handle_message(event):
 
     if msg in msg_list:
         broadcast_line_msg(msg)
-        publish_control_msg(msg)
+        publish_control_msg(msg.encode('utf-8'))
     else:
         broadcast_line_msg('点ける:on\n' \
                             '消す:off')
