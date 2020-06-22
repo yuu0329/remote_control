@@ -62,14 +62,14 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
 
-    msg = event.message.text
-    broadcast_line_msg(msg + "original")
+    msg_original = event.message.text
+    broadcast_line_msg(msg)
 
     msg = event.message.text.encode('utf-8')
     broadcast_line_msg(msg)
 
     if msg in msg_list:
-        broadcast_line_msg(msg)
+        broadcast_line_msg(msg_original)
         publish_control_msg(msg)
     else:
         broadcast_line_msg('点ける:on\n' \
