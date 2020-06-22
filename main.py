@@ -62,7 +62,7 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
 
-    msg = event.message.text.encode('utf-8')
+    msg = event.message.text
     broadcast_line_msg(msg)
 
     msg = event.message.text.encode('utf-8')
