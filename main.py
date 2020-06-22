@@ -38,8 +38,8 @@ def publish_control_msg(msg):
                     msg, \
                     hostname = 'mqtt.beebotte.com', \
                     port = 8833, \
-                    auth = {'username':'token:{}'.format(YOUR_BEEBOTTE_TOKEN)}, \
-                    tls = {'ca_certs':'mqtt.beebotte.com.pem'})
+                    auth = {'username':'<token:{}>'.format(YOUR_BEEBOTTE_TOKEN)}, \
+                    tls = {'ca_certs':'<mqtt.beebotte.com.pem>'})
 
 
 @app.route('/callback',methods=['POST']) # /callbackでデータを送られた時(POST)の処理
