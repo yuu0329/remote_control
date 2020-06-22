@@ -34,7 +34,7 @@ def broadcast_line_msg(msg):
 
 # エアコン制御用のMQTTを発行する
 def publish_control_msg(msg):
-    broadcast_line_msg('get msg')
+    broadcast_line_msg('get msg:\n' + msg.decode('utf-8'))
     publish.single('my_home/remote_control', \
                     msg, \
                     hostname = 'mqtt.beebotte.com', \
@@ -66,7 +66,6 @@ def handle_message(event):
     msg = event.message.text.encode('utf-8')
 
     if msg in msg_list:
-        broadcast_line_msg(msg.decode('utf-8'))
         publish_control_msg(msg)
     else:
         broadcast_line_msg('点ける:on\n' \
