@@ -26,7 +26,7 @@ line_bot_api = LineBotApi(YOUR_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(YOUR_CHANNEL_SECRET)
 
 #メッセージリスト
-msg_list = ['on','off']
+msg_list = [s.encode('utf-8') for s in ['on','off']]
 
 # LINEに通知を送る
 def broadcast_line_msg(msg):
@@ -63,11 +63,11 @@ def callback():
 # LINEでMessageEvent(普通のメッセージが送信されたとき)が起こったときdef以下を実行
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    msg = event.message.text
+    msg = event.message.text.encode('utf-8')
 
     if msg in msg_list:
-        broadcast_line_msg(msg)
-        publish_control_msg(msg.encode('utf-8'))
+        broadcast_line_msg(msg.decode('utf-8'))
+        publish_control_msg(msg)
     else:
         broadcast_line_msg('点ける:on\n' \
                             '消す:off')
