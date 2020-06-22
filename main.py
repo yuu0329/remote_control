@@ -63,7 +63,7 @@ def callback():
 def handle_message(event):
 
     msg_original = event.message.text
-    broadcast_line_msg(msg)
+    broadcast_line_msg(msg_original)
 
     msg = event.message.text.encode('utf-8')
     broadcast_line_msg(msg)
