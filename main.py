@@ -34,11 +34,11 @@ def broadcast_line_msg(msg):
 
 # エアコン制御用のMQTTを発行する
 def publish_control_msg(msg):
-    broadcast_line_msg('get msg:\n' + msg.decode('utf-8'))
+    broadcast_line_msg('get msg:' + msg.decode('utf-8'))
     publish.single('my_home/remote_control', \
                     msg, \
                     hostname = 'mqtt.beebotte.com', \
-                    port = 8833, \
+                    port = 8883, \
                     auth = {'username':'token:{}'.format(YOUR_BEEBOTTE_TOKEN)}, \
                     tls = {'ca_certs':'mqtt.beebotte.com.pem'})
     broadcast_line_msg('msg publish')
